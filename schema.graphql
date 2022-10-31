@@ -1,21 +1,25 @@
-type Song {
-    id: Int!
-    name: String
-    album: Album
-}
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
 
 type Album {
-    id: Int!
-    name: String
-    year: String
+  id: ID!
+  name: String!
+  year: String!
+}
+
+type Song {
+  id: ID!
+  name: String!
+  album: Album!
 }
 
 type Query {
-    allSongs: [Song]
-    allAlbums: [Album]
+  allAlbums: [Album!]!
+  allSongs: [Song!]!
 }
 
 type Mutation {
-    addSong(name: String, albumId: Int): Song
-    addAlbum(name: String, year: String): Album
+  addAlbum(name: String!, year: String!): Album!
+  addSong(name: String!, albumId: Float!): Song!
 }

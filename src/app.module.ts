@@ -1,6 +1,7 @@
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
 import { AlbumResolver } from './albums/album.resolver';
 import { AlbumService } from './albums/album.service';
 import { AppController } from './app.controller';
@@ -12,7 +13,7 @@ import { SongService } from './songs/song.service';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      typePaths: ['./**/*.graphql'],
+      autoSchemaFile: join(process.cwd(), 'schema.graphql'),
       debug: false,
     }),
   ],
