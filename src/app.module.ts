@@ -13,15 +13,17 @@ import { SongService } from './songs/song.service';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-        typePaths: ['./**/*.graphql'],
-        debug: false,
-      // definitions: {
-      //   path: join(process.cwd(), 'src/graphql.ts')
-      // },
-      // autoSchemaFile: true,
+      typePaths: ['./**/*.graphql'],
+      debug: false,
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, AlbumResolver, SongResolver, AlbumService, SongService],
+  providers: [
+    AppService,
+    AlbumResolver,
+    SongResolver,
+    AlbumService,
+    SongService,
+  ],
 })
 export class AppModule {}
