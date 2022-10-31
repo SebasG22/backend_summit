@@ -7,7 +7,8 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { AlbumService } from '../albums/album.service';
-import { SongEntity, SongService } from './song.service';
+import { Song } from './song.model';
+import { SongService } from './song.service';
 
 @Resolver('Song')
 export class SongResolver {
@@ -17,13 +18,13 @@ export class SongResolver {
   ) {}
 
   @Query('allSongs')
-  getAllSongs(): SongEntity[] {
+  getAllSongs(): Song[] {
     return this.songService.getSongs();
   }
 
   @ResolveField()
-  async album(@Parent() author) {
-    const { id } = author;
+  async album(@Parent() album) {
+    const { id } = album;
     return this.albumService.getAlbumById(id);
   }
 
